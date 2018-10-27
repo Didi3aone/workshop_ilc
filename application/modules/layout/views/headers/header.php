@@ -133,8 +133,8 @@
                 <li>
                     <a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">User Regis</span></a>
                     <ul>
-                        <li class="<?= (isset($active_page) && $active_page == "") ? "active" : ""?>">
-                            <a href="<?= site_url('manager/training') ?>">List Data</a>
+                        <li class="<?= (isset($active_page) && $active_page == "UserRegister") ? "active" : ""?>">
+                            <a href="<?= site_url('manager/register') ?>">List Data</a>
                         </li>
                     </ul>
                 </li>
@@ -151,7 +151,7 @@
                     <a href="#"><i class="fa fa-lg fa-fw fa-building"></i> <span class="menu-item-parent">Partner</span></a>
                     <ul>
                         <li class="<?= (isset($active_page) && $active_page == "partner") ? "active" : ""?>">
-                            <a href="<?= site_url('manager/background') ?>">List Data</a>
+                            <a href="<?= site_url('manager/mitra') ?>">List Data</a>
                         </li>
                     </ul>
                 </li>
@@ -171,12 +171,17 @@
                     <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Setting</span></a>
                     <ul>
                         <li class="<?= (isset($active_page) && $active_page == "setting") ? "active" : ""?>">
-                            <a href="<?= site_url('manager/setting') ?>">Tutorial</a>
+                            <a href="<?= site_url('manager/setting/tutorial-list') ?>">Tutorial</a>
                         </li>
 
                         <li class="<?= (isset($active_page) && $active_page == "setting") ? "active" : ""?>">
-                            <a href="<?= site_url('manager/setting') ?>">Tautan</a>
+                            <a href="<?= site_url('manager/setting/payment-list') ?>">Metode Pembayaran</a>
                         </li>
+
+                        <li class="<?= (isset($active_page) && $active_page == "setting") ? "active" : ""?>">
+                            <a href="<?= site_url('manager/setting/tautan-list') ?>">Tautan</a>
+                        </li>
+
                     </ul>
                 </li>
             </ul>

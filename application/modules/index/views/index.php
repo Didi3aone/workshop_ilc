@@ -24,6 +24,7 @@
 	                ))['datas'];
 
 	                foreach($slide as $key => $val) :
+	                	$id    = $val['PelatihanId'];
 	                    $img   = $val['PelatihanPhotoReal'];
 	                    $title = $val['PelatihanTitle'];
 	                    $desc  = $val['PelatihanDesc'];
@@ -33,7 +34,7 @@
 			        <div class="carousel-caption">
 			          <h3><?= $title; ?></h3>
 			          <p><?= $desc; ?></p>
-			          <p><a href="<?= site_url('register'); ?>" class="btn btn-primary" title="">Register</a></p>
+			          <p><a href="<?= site_url('register/form/'.$id); ?>" class="btn btn-primary" title="">Register</a></p>
 			        </div>
 			    </div>		  
 				<?php 
@@ -98,26 +99,44 @@
 	    </div>
         <!-- End Our courses titile -->
 
-        <!-- Start Our courses content -->
-        <div class="row">
-			<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-	            <div class="MultiCarousel-inner">
-	                <div class="item">
-	                    <div class="pad15">
-	                        <img src="<?= base_url(); ?>assets/frontend/img/notice.jpg" alt="" class="img-responsive">
-	                    </div>
-	                </div>
-	                <div class="item">
-	                    <div class="pad15">
-	                        <img src="<?= base_url(); ?>assets/frontend/img/notice.jpg" alt="" class="img-responsive">
-	                    </div>
-	                </div>
-	            </div>
-	            <button class="btn btn-primary leftLst"><</button>
-	            <button class="btn btn-primary rightLst">></button>
-	        </div>
-		</div>
-        <!-- End Our courses content -->
+          <div class="row">
+          	<div class="col-md-12 col-sm-12 col-xs-12">
+          		<div id="Carousels" class="carousel slide">
+
+          			<ol class="carousel-indicators">
+          				<li data-target="#Carousels" data-slide-to="0" class="active"></li>
+          				<li data-target="#Carousels" data-slide-to="1"></li>
+          				<li data-target="#Carousels" data-slide-to="2"></li>
+          			</ol>
+          			<!-- Carousel items -->
+          			<div class="carousel-inner">
+          				<div class="item active">
+          					<div class="row">
+          						<?php 
+          							$mitra = $this->Dynamic_model->set_model("tbl_mitra")->get_all_data()['datas'];
+
+          							foreach( $mitra as $key => $val ):
+          						?>
+          						<div class="col-md-2 col-xs-4">
+          							<a href="<?= $val['mitra_link_web']; ?>" class="thumbnail">
+          								<img src="<?= base_url($val['mitra_photo']); ?>" alt="Image" style="height:80px;"></a>
+          						</div>
+	          					<?php endforeach; ?>
+          					</div><!--.row-->
+          				</div><!--.item-->
+  					</div>
+
+  					<!-- <a class="left carousels-control" href="#Carousels" role="button" data-slide="prev">
+				      	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				      	<span class="sr-only">Previous</span>
+				    </a>
+				    <a class="right carousels-control" href="#Carousels" role="button" data-slide="next">
+				      	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				      	<span class="sr-only">Next</span>
+				    </a> -->
+  				</div>
+  			</div>
+  		</div>
     </div>
 </section>
 <!--=========== END OUR TUTORS SECTION ================-->

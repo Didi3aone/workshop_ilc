@@ -39,8 +39,10 @@ class Training extends CI_Controller {
 
         $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         
-        $start = $this->input->get("start_date");
-        $judul = $this->input->get("judul");
+        $start  = $this->input->get("start_date");
+        $end    = $this->input->get("end_date");
+        $judul  = $this->input->get("judul");
+        $tempat = $this->input->get('tempat');
 
         // $start = date("Y-m-d", strtotime($start));
 
@@ -48,8 +50,16 @@ class Training extends CI_Controller {
             $data['start_date'] = $start;
         }
 
+        if( !empty($end) ) {
+            $data['end_date'] = $end;
+        }
+
         if( !empty($judul) ) {
             $data['judul']      = $judul;
+        }
+
+        if( !empty($tempat) ) {
+            $data['tempat']     = $tempat;
         }
         
         // $data['end_date']   = $this->input->post("end");

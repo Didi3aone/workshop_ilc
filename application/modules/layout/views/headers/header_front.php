@@ -18,7 +18,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/icon" href="<?= base_url(); ?>assets/frontend/img/wpf-favicon.png"/>
+        <link rel="shortcut icon" type="image/icon" href=""/>
 
         <!-- CSS
         ================================================== -->       
@@ -82,17 +82,16 @@
                         <!-- TEXT BASED LOGO -->
                         <!-- <a class="navbar-brand" href="#">Training</a>               -->
                         <!-- IMG BASED LOGO  -->
-                        <a class="navbar-brand" href="index.html">
+                        <!-- <a class="navbar-brand" href="index.html"> -->
                             
-                        </a>
-                        <img src="<?= base_url(); ?>assets/frontend/img/ilc.jpeg" alt="logo" style="width: 90px; height: 70px; margin-top: 6px;">             
+                            <img src="<?= base_url(); ?>assets/frontend/img/ilc.jpeg" alt="logo" class="img-responsive" style="width: 90px; height: 60px; margin-top: 6px;">             
+                        <!-- </a> -->
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
                             <li><a href="<?= site_url(); ?>">Beranda</a></li>
                             <li><a href="<?= site_url('training'); ?>">Pelatihan</a></li>
                             <li><a href="<?= site_url('event'); ?>">Events</a></li>
-                            <li><a href="<?= site_url('contact'); ?>">Contact Us</a></li>
                         </ul>           
                     </div><!--/.nav-collapse -->
                 </div>     

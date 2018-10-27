@@ -28,6 +28,7 @@ class Dashboard_manager extends CI_Controller
      */
 	public function index($slug = null)
 	{
+        $total = $this->Dynamic_model->set_model("tbl_pendaftaran")->get_all_data(array("count_all_first" => true));
         //set all properties
         $this->_header = array(
             "title"      => "Dashboard",   
@@ -46,6 +47,7 @@ class Dashboard_manager extends CI_Controller
             "title"      => "Dashboard",
             "title_page" => "Dashboard",
             "breadcrumb" => "<li> Dashboard </li>",
+            "total"      => $total
         );
 
 		$this->load->view(HEADER_MANAGER,$this->_header);

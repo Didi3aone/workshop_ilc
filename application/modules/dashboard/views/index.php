@@ -8,9 +8,9 @@
 		<!-- small box -->
 		<div class="small-box bg-maroon">
 			<div class="inner">
-				<h3>1-</h3>
+				<h3><?= $total['total']; ?></h3>
 
-				<p>Total Register</p>
+				<p>Total User Register</p>
 			</div>
 			<div class="icon">
 				<i class="fa fa-users"></i>

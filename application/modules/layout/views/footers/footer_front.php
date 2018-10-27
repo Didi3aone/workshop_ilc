@@ -112,6 +112,8 @@
     <script src="<?php echo base_url() ?>assets/js/jquery-ui-1.12.1.min.js"></script>
     <!-- Bootstrap js -->
     <script src="<?= base_url(); ?>assets/frontend/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/bootstrap-notify.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/plugins/sweetalert.min.js"></script>
     <!-- Preloader js file -->
     <script src="<?= base_url(); ?>assets/frontend/js/queryloader2.min.js" type="text/javascript"></script>
     <!-- For smooth animatin  -->
@@ -136,6 +138,7 @@
     <script src="<?= base_url(); ?>assets/frontend/js/custom.js"></script>
     <script src="<?php echo base_url() ?>assets/js/plugins/moment.js"></script>
     <script src="<?php echo base_url() ?>assets/js/plugins/bootstrap-daterangepicker-master/daterangepicker.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/global.js"></script>
     <script src="<?php echo base_url() ?>assets/js/global.js"></script>
     <?php $this->load->view("layout/footers/javascript/script_js"); ?>
     <!--=============================================== 
