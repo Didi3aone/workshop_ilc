@@ -5,7 +5,7 @@ class Register_manager extends MX_Controller {
 
 	private $_title       = "User Register";
     private $_title_page  = 'User Register ';
-    private $_breadcrumb  = "<li><a href='/'>Home</a></li>";
+    private $_breadcrumb  = "<li><a href='#'>Home</a></li>";
     private $_active_page = "UserRegister";
     private $_dm;
     private $_view        = "register/manage/";
@@ -108,7 +108,8 @@ class Register_manager extends MX_Controller {
         $filter = $this->input->get("filter");
 
         $select = array("pendaftaran_id","pendaftaran_company","PelatihanTitle");
-        $joined = array("tbl_pelatihan tpl" => array("tpl.PelatihanId" => $this->_table_alias.".pendaftaran_training_id"));
+        $joined = array(
+            "tbl_pelatihan tpl" => array("tpl.PelatihanId" => $this->_table_alias.".pendaftaran_training_id"));
 
         $column_sort = $select[$sort_col];
 
@@ -123,9 +124,16 @@ class Register_manager extends MX_Controller {
                 switch ($key) {
                     case 'id':
                         if ($value != "") {
-                            $data_filters['lower(group_id)'] = $value;
+                            $data_filters['lower(pendaftaran_id)'] = $value;
                         }
                         break;
+
+                    case 'company':
+                        if ($value != "") {
+                            $data_filters['lower(pendaftaran_company)'] = $value;
+                        }
+                        break;
+
                     default:
                         break;
                 }

@@ -6,25 +6,34 @@
             <div class="row">
                 <div class="col-ld-3  col-md-3 col-sm-3">
                     <div class="single_footer_widget">
-                        <h3>Training</h3>
+                        <img src="<?= base_url(); ?>assets/frontend/img/ilc.jpeg" alt="logo" class="img-res">
                         <p>
-                            Alamat
+                            <?php 
+                            $contact = $this->Dynamic_model->set_model("tbl_contact_us")->get_all_data(array(
+                                "row_array" => true
+                            ))['datas'];
+                        ?>
+                            <p><?= $contact['cont_address'] ?></p>
+                            <p>Phone: <?= $contact['cont_telp']; ?></p>
+                            <p>Email: <?= $contact['cont_email']; ?></p>
                         </p>
                     </div>
                 </div>
+
                 <div class="col-ld-3  col-md-3 col-sm-3">
                     <div class="single_footer_widget">
                         <h3>Tautan</h3>
                         <ul class="footer_widget_nav">
-                          <li><a href="#">Tentang Kami</a></li>
-                          <li><a href="#">Syarat & Ketentuan</a></li>
-                          <li><a href="#">Panduan Pembayaran</a></li>
-                          <li><a href="#">Cara Daftar</a></li>
-                          <li><a href="#">Hubungi Kami</a></li>
+                          <li><a href="<?= site_url('about'); ?>">Tentang Kami</a></li>
+                          <li><a href="<?= site_url('syarat-ketentuan'); ?>">Syarat & Ketentuan</a></li>
+                          <li><a href="<?= site_url('tutorial-pembayaran'); ?>">Panduan Pembayaran</a></li>
+                          <li><a href="<?= site_url('tutorial-pendaftaran'); ?>">Cara Daftar</a></li>
+                          <li><a href="<?= site_url('contact-us'); ?>">Hubungi Kami</a></li>
                           <li><a href="#">Karir</a></li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-lg-3  col-md-3 col-sm-3"></div>
                 <div class="col-lg-3  col-md-3 col-sm-3">
                     <div class="single_footer_widget">
@@ -42,18 +51,22 @@
                     </div>
                 </div>
             </div>
+
             <hr>
             <div class="row">
                 <div class="col-ld-3  col-md-3 col-sm-3">
                     <div class="single_footer_widget">
                         <h4 style="color: white;">Metode Pembayaran</h4>
-                        <!-- <div class="col-md-8"> -->
-                            <img src="https://ajari-ku.com/images/payment-chanel/mandiri-logo.png" class="img-responsive" style="height: 40px;">
-                            <img src="https://ajari-ku.com/images/payment-chanel/bca-logo.png" class="img-responsive" style="height: 40px;">
-                            <img src="https://ajari-ku.com/images/payment-chanel/visa_master_jcb.png" class="img-responsive" style="height: 40px;">
-                        <!-- </div> -->
+                        <?php 
+                            $payment = $this->Dynamic_model->set_model('tbl_payment')->get_all_data()['datas'];
+
+                            foreach($payment as $img) :
+                        ?>
+                            <img src="<?= base_url($img['payment_image']); ?>" class="img-responsive" style="height: 40px;">
+                        <?php endforeach; ?>
                     </div>
                 </div><br>
+
                 <div class="col-ld-3  col-md-3 col-sm-3">
                     <div class="single_footer_widget">
                         <h3>Ikuti Kami</h3>
@@ -66,17 +79,19 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-lg-3  col-md-3 col-sm-3"></div>
+
                 <div class="col-lg-3 col-md-3 col-sm-3">
                     <div class="col-sm-12">
                         <div class="single">
                             <i style="color:white;">Newsletter</i>
                             <div class="input-group">
-                                 <input type="email" class="form-control" placeholder="Enter your email">
+                                <input type="email" id="email" class="form-control td-inputan" placeholder="Enter your email">
                                  <span class="input-group-btn">
-                                     <button class="btn btn-danger" type="submit">Subscribe</button>
+                                     <button type="button" class="btn btn-danger btn-subcribe">Subscribe</button>
                                  </span>
-                              </div>
+                            </div>
                         </div>
                     </div>
                 </div>

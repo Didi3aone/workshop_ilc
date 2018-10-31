@@ -58,8 +58,13 @@ $route['translate_uri_dashes'] = TRUE;
 $route['home'] = "index";
 $route['process_login'] = "user/auth_manager/login";
 $route['training'] = "training/index";
-// $route['register/(:any)'] = 'register/index/$1'; 
-// $route['register_form)'] = 'register/process_form'; 
+
+$route['tutorial-pendaftaran'] = "setting/tutorial_daftar";
+$route['tutorial-pembayaran'] = "setting/tutorial_bayar";
+$route['about']   = "setting/about";
+$route['contact-us']   = "setting/contact_us";
+$route['syarat-ketentuan']   = "setting/syarat_ketentuan";
+$route['register/(:any)']   = "register/form/$1";
 
 $route['manager'] = "dashboard/dashboard_manager";
 $route['manager/login'] = "user/auth_manager";

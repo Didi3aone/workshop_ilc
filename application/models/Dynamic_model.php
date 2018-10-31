@@ -189,14 +189,6 @@
     {
         $result = $this->db->get()->result_array();
 
-        if(count($result) > 0) {
-            foreach($result as $key => $value) {
-                if (isset($value['status']) && array_key_exists($value['status'], self::$static) === TRUE) {
-                    $result[$key]['status_name'] = self::$static[$value['status']];
-                }
-            }
-        }
-
         return $result;
     }
 

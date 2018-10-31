@@ -13,6 +13,15 @@ class Training_model extends CI_Model {
 	
 	public function get_all_data( $params = array() )
 	{
+		if( isset($params['start_dates']) )
+		{
+			$this->db->where("PelatihanStartDate", date('Y-m-d',strtotime($params['start_dates'])));
+		}
+
+		if( isset($params['id']) ){
+			$this->db->where('PelatihanId', $params['id']);
+		}
+
 		if( isset($params['start_date']) && isset($params['end_date']) )
 		{
 			$this->db->where("PelatihanStartDate >=", date('Y-m-d',strtotime($params['start_date'])));
@@ -37,9 +46,16 @@ class Training_model extends CI_Model {
 		$this->db->select("*");
 		$this->db->from($this->_table);
 		// echo $this->db->last_query();
-		$result = $this->db->get()->result_array();
+		$result = $this->db->get();
 
-		return $result;
+		if( isset($params['id']) )
+		{
+			return $result->row_array();
+		} else {
+			return $result->result_array();
+		}
+
+		// return $result->result_array();
 	}
 
 	public function count_all_data()

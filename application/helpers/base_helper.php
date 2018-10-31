@@ -161,6 +161,12 @@ function validate_date_input($date) {
     }
 }
 
+function validate_input_save($date) {
+
+    $date = date("Y-m-d H:i:s", strtotime($date));
+    return $date;
+}
+
 /**
  * FUNCTION TO VALIDATE Null
  */
@@ -252,21 +258,6 @@ function sanitize_str_input($str = NULL, $type = "string", $regex = "/[^a-zA-Z0-
     return preg_replace($regex, "", $str);
 }
 
-
-/**
- * Check API KEY if it is valid (exists in DB) or not.
- */
-function check_api_key($api_key) {
-    $ci = & get_instance();
-	$ci->load->model('user/User_model');
-    $check_apikey = $ci->User_model->get_all_data(array("conditions" => array("api_key" => $api_key), "row_array" => true));
-
-    if ($check_apikey):
-        return $check_apikey;
-    else :
-        return false;
-    endif;
-}
 
 
 /**

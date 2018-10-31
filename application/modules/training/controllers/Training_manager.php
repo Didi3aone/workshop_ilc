@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Training_manager extends MX_Controller {
 
-	private $_title       = "Workshop";
+    private $_title       = "Workshop";
     private $_title_page  = 'Workshop ';
     private $_breadcrumb  = "<li><a href='/'>Home</a></li>";
     private $_active_page = "Workshop";
@@ -19,13 +19,16 @@ class Training_manager extends MX_Controller {
     private $_pk_field    = "PelatihanId";
 
     public function __construct() {
-    	parent::__construct();
-    	//new class model
+        parent::__construct();
+        //new class model
         $this->load->helper('form');
         $this->_dm = new Dynamic_model();
+        if( $this->session->userdata("IS_LOGIN") == FALSE) {
+            redirect('manager/login','refresh');
+        }
     }
 
-	/*
+    /*
     * list data
     */
     public function index()
@@ -75,13 +78,12 @@ class Training_manager extends MX_Controller {
             "script" => array(
                 "assets/js/plugins/cropper/cropper.min.js",
                 "assets/js/crop-master.js",
-                "assets/js/plugins/markdown/markdown.min.js",
-                "assets/js/plugins/markdown/to-markdown.min.js",
-                "assets/js/plugins/markdown/bootstrap-markdown.min.js",
+                "assets/js/bootstrap-datetimepicker.min.js",
                 "assets/js/plugins/tinymce/tinymce.min.js"
             ),
             "script_js" => $this->_js_view ."create_js",
             "css"   => array(
+                "assets/css/bootstrap-datetimepicker.min.css",
                 "assets/js/plugins/cropper/crop.css",
                 "assets/js/plugins/cropper/cropper.css"
             ),
@@ -102,36 +104,90 @@ class Training_manager extends MX_Controller {
             show_404();
         }
 
-        $data['item'] = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->get_all_data(array(
-            "conditions" => array("status" => STATUS_ACTIVE, "slider_id" => $id), 
-            "row_array"  => true))['datas'];
-        // pr($data['item']);exit;
+        $data['datas'] = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->get_all_data(array(
+            "select"     => $this->_table_alias.".*, tu.username",
+            "joined"     => array(
+                "tbl_user tu" => array("tu.user_id" => $this->_table_alias.".PelatihanCreatedBy")
+            ),
+            "conditions" => array("PelatihanIsActive" => STATUS_ACTIVE, "PelatihanId" => $id), 
+            "row_array"  => true
+        ))['datas'];
+
         $this->_header = array(
-            "title"         => $this->_title ."-create",    
-            "title_page"    => $this->_title_page."-create",
-            "breadcrumb"    => $this->_breadcrumb. "<li> Buat Artikel </li>",
-            "active_page"   => $this->_active_page ."-create",
+            "title"         => $this->_title ."-Edit",    
+            "title_page"    => $this->_title_page."-Edit",
+            "breadcrumb"    => $this->_breadcrumb. "<li> Edit Workshop </li>",
+            "active_page"   => $this->_active_page
         );
-        // pr($this->_header);exit;
+
 
         $this->_footer = array(
             "script" => array(
                 "assets/js/plugins/cropper/cropper.min.js",
                 "assets/js/crop-master.js",
-                "assets/js/plugins/markdown/markdown.min.js",
-                "assets/js/plugins/markdown/to-markdown.min.js",
-                "assets/js/plugins/markdown/bootstrap-markdown.min.js",
+                "assets/js/bootstrap-datetimepicker.min.js",
+                "assets/js/plugins/tinymce/tinymce.min.js"
             ),
             "script_js" => $this->_js_view ."create_js",
             "css"   => array(
                 "assets/js/plugins/cropper/crop.css",
-                "assets/js/plugins/cropper/cropper.css"
+                "assets/js/plugins/cropper/cropper.css",
+                "assets/css/bootstrap-datetimepicker.min.css"
             ),
         );
 
         //load views
         $this->load->view(HEADER_MANAGER, $this->_header);
         $this->load->view($this->_view. 'create',$data);
+        $this->load->view(FOOTER_MANAGER, $this->_footer);
+    }
+
+    /**
+     * create new article
+     */
+    public function view($id = null)
+    {
+        if($id == null || !is_numeric($id)) {
+            show_404();
+        }
+
+        $data['datas'] = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->get_all_data(array(
+            "select"     => $this->_table_alias.".*, tu.username",
+            "joined"     => array(
+                "tbl_user tu" => array("tu.user_id" => $this->_table_alias.".PelatihanCreatedBy")
+            ),
+            "conditions" => array("PelatihanIsActive" => STATUS_ACTIVE, "PelatihanId" => $id), 
+            "row_array"  => true
+        ))['datas'];
+
+        $this->_header = array(
+            "title"         => $this->_title ."-View",    
+            "title_page"    => $this->_title_page."-View",
+            "breadcrumb"    => $this->_breadcrumb. "<li> View Workshop </li>",
+            "active_page"   => $this->_active_page,
+        );
+
+
+        $this->_footer = array(
+            "script" => array(
+                "assets/js/plugins/cropper/cropper.min.js",
+                "assets/js/crop-master.js",
+                "assets/js/bootstrap-datetimepicker.min.js",
+                "assets/js/plugins/tinymce/tinymce.min.js",
+                "assets/js/plugins/lightbox/js/lightbox.js",
+            ),
+            "script_js" => $this->_js_view ."create_js",
+            "css"   => array(
+                "assets/js/plugins/cropper/crop.css",
+                "assets/js/plugins/lightbox/css/lightbox.css",
+                "assets/js/plugins/cropper/cropper.css",
+                "assets/css/bootstrap-datetimepicker.min.css"
+            ),
+        );
+
+        //load views
+        $this->load->view(HEADER_MANAGER, $this->_header);
+        $this->load->view($this->_view. 'view',$data);
         $this->load->view(FOOTER_MANAGER, $this->_footer);
     }
 
@@ -152,15 +208,22 @@ class Training_manager extends MX_Controller {
         $search = sanitize_str_input($this->input->get("search")['value']);
         $filter = $this->input->get("filter");
 
-        $select = array("PelatihanId","PelatihanTitle","PelatihanStartDate","PelatihanLokasi");
-        // $joined = array("tbl_user u" => array("u.user_id" => $this->_table_alias.".created_by"));
+        $select = array(
+            "PelatihanId",
+            "PelatihanTitle",
+            "PelatihanStartDate",
+            "PelatihanEndDate",
+            "PelatihanPhoto",
+            "PelatihanPhotoReal",
+            "PelatihanLokasi"
+        );
 
         $column_sort = $select[$sort_col];
 
         //initialize.
         $data_filters = array();
-        $conditions = array();
         $status = STATUS_ACTIVE;
+        $conditions = array("PelatihanIsActive" => $status);
 
         if (count ($filter) > 0) {
             foreach ($filter as $key => $value) {
@@ -168,7 +231,17 @@ class Training_manager extends MX_Controller {
                 switch ($key) {
                     case 'id':
                         if ($value != "") {
-                            $data_filters['lower(group_id)'] = $value;
+                            $data_filters['lower(PelatihanId)'] = $value;
+                        }
+                        break;
+                    case 'workshop':
+                        if ($value != "") {
+                            $data_filters['lower(PelatihanTitle)'] = $value;
+                        }
+                        break;
+                    case 'lokasi':
+                        if ($value != "") {
+                            $data_filters['lower(PelatihanLokasi)'] = $value;
                         }
                         break;
                     default:
@@ -227,16 +300,17 @@ class Training_manager extends MX_Controller {
         $lokasi     = $this->input->post('lokasi');
         $biaya      = $this->input->post('biaya');
         $desc       = $this->input->post('desc');
-        $dates      = $this->input->post('dates');
+        $dates      = validate_input_save($this->input->post('dates'));
+        $enddates   = validate_input_save($this->input->post('enddates'));
         $create_by  = $this->session->userdata("id");
         $now        = date("Y-m-d H:i:s");
         $data_image = $this->input->post('data_image');
+        $real_image = $this->input->post('real_image');
 
-        $dates = date('Y-m-d', strtotime($dates));
         // pr($this->input->post());exit;
         //set validation
         $this->form_validation->set_rules("title", "Title", "required");
-        $this->form_validation->set_rules("company", "Company", "required");
+        // $this->form_validation->set_rules("company", "Company", "required");
         $this->form_validation->set_rules("lokasi", "Lokasi", "required");
         $this->form_validation->set_rules("biaya", "Biaya", "required");
  
@@ -255,6 +329,7 @@ class Training_manager extends MX_Controller {
                 "PelatihanLokasi"       => $lokasi,
                 "PelatihanBiaya"        => $biaya,
                 "PelatihanStartDate"    => $dates,
+                "PelatihanEndDate"      => $enddates,
                 "PelatihanDesc"         => $desc
             );
 
@@ -270,11 +345,11 @@ class Training_manager extends MX_Controller {
                 $id //id
             );
 
-            if(isset($_FILES['real_image']) ) {
-                $upload_real_image = $this->upload_file("real_image", "brosur-".date('Ymd').time()  , false,"upload/brosur/real-image",$id);
+            if( isset($_FILES['real_image'])) {
+                $upload_real_image = $this->upload_file("real_image", "brosur-".date('Ymd')."-time(".time().")"  , false,"upload/brosur/real-image",$id);
             } 
-            // pr($image);exit;
-            if(isset($upload_real_image['uploaded_path'])) {
+
+            if(!empty($upload_real_image['uploaded_path'])) {
                 $_save_data['PelatihanPhotoReal'] = $upload_real_image['uploaded_path'];
             }
 
@@ -284,7 +359,8 @@ class Training_manager extends MX_Controller {
 
             //insert or update
             if($id == "") {
-                // pr($image);exit;
+                // pr($this->input->post());exit;
+
                 $_save_data['PelatihanCreatedBy']   = $create_by;
                 $_save_data['PelatihanCreatedDate'] = $now;
                 $result = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->insert($_save_data);
@@ -305,10 +381,25 @@ class Training_manager extends MX_Controller {
                 }
             } else {
 
+                $get_data = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->get_all_data(array(
+                    "conditions" => array("PelatihanId" => $id),
+                    "row_array"  => true
+                ))['datas'];
+
                 $conditions = array("PelatihanId" => $id);
 
                 $_save_data['PelatihanUpdatedBy']   = $create_by;
                 $_save_data['PelatihanUpdatedDate'] = $now;
+
+                //update     
+                if(!empty($image) && isset($get_data['PelatihanPhoto'])) {
+                    unlink( FCPATH .$get_data['PelatihanPhoto']);
+                }
+
+                //update     
+                if(isset($_FILES['real_image']) && isset($get_data['PelatihanPhotoReal'])) {
+                    unlink( FCPATH .$get_data['PelatihanPhotoReal']);
+                }
 
                 $result = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->update($_save_data, $conditions);
 
@@ -341,9 +432,6 @@ class Training_manager extends MX_Controller {
             exit('No direct script access allowed');
         }
 
-        //load model
-        $this->load->model('Background_model');
-
         $message['is_error'] = true;
 
         $id = $this->input->post('id');
@@ -351,13 +439,24 @@ class Training_manager extends MX_Controller {
         if($id == "" || !is_numeric($id)) {
             show_404();
         } else {
-            $get_data = $this->Background_model->get_all_data(array(
-                "find_by_pk" => array($id),
-                "row_array"  => true
-            ))['datas'];
-            
-            $conditions = array("slider_id" => $id);
-            $result = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->update(array("status" => 0), $conditions);
+            // $get_data = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->get_all_data(array(
+            //     "find_by_pk" => array($id),
+            //     "row_array"  => true
+            // ))['datas'];
+           
+            //update     
+            // if(!empty($get_data['PelatihanPhotoReal'])) {
+            //     unlink( FCPATH .$get_data['PelatihanPhotoReal']);
+            // }
+
+            // if(!empty($get_data['PelatihanPhoto'])) {
+            //     unlink( FCPATH .$get_data['PelatihanPhoto']);
+            // }
+
+            $conditions = array("PelatihanId" => $id);
+            $result = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->update(array("PelatihanIsActive" => STATUS_DELETED), 
+                $conditions
+            );
 
             if($this->db->trans_status() == false) {
 
@@ -368,8 +467,8 @@ class Training_manager extends MX_Controller {
                 $this->db->trans_commit();
                 $message['is_error']      = false;
                 $message['notif_title']   = "Excellent !!.";
-                $message['notif_message'] = "Background SLide has been deleted.";
-                $message['redirect_to']   = site_url("admin/background");
+                $message['notif_message'] = "Workshop has been deleted.";
+                $message['redirect_to']   = "";
             }
         }
 
@@ -398,6 +497,8 @@ class Training_manager extends MX_Controller {
                 "overwrite"             =>  false,
                 "max_size"              =>  MAX_UPLOAD_IMAGE_SIZE_IN_KB,
                 "upload_path"           =>  "upload/temp",
+                "max_width"             => "2048",
+                "max_height"            => "2048"
             );
 
             if (!empty($file_name)) {

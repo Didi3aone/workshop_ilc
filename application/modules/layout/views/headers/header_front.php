@@ -15,6 +15,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <!-- Favicon -->
@@ -54,10 +55,10 @@
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+        <!-- [if lt IE 9]> -->
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- <![endif] -->
  
     </head>
     <body>    
@@ -84,7 +85,7 @@
                         <!-- IMG BASED LOGO  -->
                         <!-- <a class="navbar-brand" href="index.html"> -->
                             
-                            <img src="<?= base_url(); ?>assets/frontend/img/ilc.jpeg" alt="logo" class="img-responsive" style="width: 90px; height: 60px; margin-top: 6px;">             
+                            <img src="<?= base_url(); ?>assets/frontend/img/ilc.jpeg" alt="logo" class="img-responsive" style="width: 90px; height: 60px; margin-top: 9px;">             
                         <!-- </a> -->
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">

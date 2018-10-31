@@ -70,7 +70,7 @@
                     				<td><input type="text" class="form-control" name="name_1" readonly value="<?= $regis['pendaftaran_name_1']; ?>" placeholder=""></td>
                     				<td><input type="text" class="form-control" name="jabatan_1" readonly value="<?= $regis['pendaftaran_jabatan_1']; ?>" placeholder=""></td>
                     				<td><input type="text" class="form-control" name="phone_1" readonly value="<?= $regis['pendaftaran_phone_1']; ?>" placeholder=""></td>
-                    				<td><input type="text" class="form-control" name="email_1" value="<?= $regis['pendaftaran_email_1']; ?>" placeholder=""></td>
+                    				<td><input type="text" class="form-control" name="email_1" readonly value="<?= $regis['pendaftaran_email_1']; ?>" placeholder=""></td>
                     			</tr>
                     			<tr>
                     				<td>2</td>

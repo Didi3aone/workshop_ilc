@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mitra_manager extends CI_Controller {
 
-	private $_title       = "Mitra";
-    private $_title_page  = 'Mitra ';
+	private $_title       = "Partner";
+    private $_title_page  = 'Partner ';
     private $_breadcrumb  = "<li><a href='/'>Home</a></li>";
-    private $_active_page = "Mitra";
+    private $_active_page = "mitra";
     private $_dm;
     private $_view        = "mitra/";
     private $_js_view     = "mitra/javascript/";
@@ -34,7 +34,7 @@ class Mitra_manager extends CI_Controller {
         $this->_header = array( 
             "title"      => $this->_title,   
             "title_page" => $this->_title_page,
-            "breadcrumb" => $this->_breadcrumb ."<li>Mitra</li>",
+            "breadcrumb" => $this->_breadcrumb ."<li>Partner</li>",
             "active_page"=> $this->_active_page,
             "css" => array(
                 "assets/js/plugins/lightbox/css/lightbox.css"
@@ -66,7 +66,7 @@ class Mitra_manager extends CI_Controller {
         $this->_header = array(
             "title"         => $this->_title ."-create",    
             "title_page"    => $this->_title_page."-create",
-            "breadcrumb"    => $this->_breadcrumb. "<li> Buat Artikel </li>",
+            "breadcrumb"    => $this->_breadcrumb. "<li> Create Partner </li>",
             "active_page"   => $this->_active_page ."-create",
         );
         // pr($this->_header);exit;
@@ -105,7 +105,7 @@ class Mitra_manager extends CI_Controller {
         $this->_header = array(
             "title"         => $this->_title ."-edit",    
             "title_page"    => $this->_title_page."-edit",
-            "breadcrumb"    => $this->_breadcrumb. "<li> Edit mitra </li>",
+            "breadcrumb"    => $this->_breadcrumb. "<li> Edit Partner </li>",
             "active_page"   => $this->_active_page ."-edit",
         );
         // pr($this->_header);exit;
@@ -151,8 +151,8 @@ class Mitra_manager extends CI_Controller {
 
         //initialize.
         $data_filters = array();
-        $conditions = array();
         $status = STATUS_ACTIVE;
+        $conditions = array("mitra_is_active" => $status);
 
         if (count ($filter) > 0) {
             foreach ($filter as $key => $value) {
@@ -317,13 +317,9 @@ class Mitra_manager extends CI_Controller {
         if($id == "" || !is_numeric($id)) {
             show_404();
         } else {
-            $get_data = $this->Background_model->get_all_data(array(
-                "find_by_pk" => array($id),
-                "row_array"  => true
-            ))['datas'];
-            
+
             $conditions = array("mitra_id" => $id);
-            $result = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->update(array("status" => 0), $conditions);
+            $result = $this->_dm->set_model($this->_table, $this->_table_alias, $this->_pk_field)->update(array("mitra_is_active" => STATUS_DELETED), $conditions);
 
             if($this->db->trans_status() == false) {
 
@@ -334,8 +330,8 @@ class Mitra_manager extends CI_Controller {
                 $this->db->trans_commit();
                 $message['is_error']      = false;
                 $message['notif_title']   = "Excellent !!.";
-                $message['notif_message'] = "Mitra SLide has been deleted.";
-                $message['redirect_to']   = site_url("manager/mitra");
+                $message['notif_message'] = "Mitra has been deleted.";
+                $message['redirect_to']   = "";
             }
         }
 

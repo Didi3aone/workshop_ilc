@@ -61,12 +61,14 @@
 	    <div class="block"  style="margin-top: 20px;">
 	      	<div class="row" style="background-color: #de5f15;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
 		        <div class="span4" style="margin-bottom: 40px; margin-left: 10px;">
-		          	<img class="img-left" src="http://assets.barcroftmedia.com.s3-website-eu-west-1.amazonaws.com/assets/images/recent-images-11.jpg"/ height="170">
-			          <div class="content-heading putih"><h3>Experience &nbsp </h3></div>
-			          <p class="putih">Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-			          <p class="putih">Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-			          <p class="putih">Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-			          <a href="" class="btn btn-info" title="">Cara mendaftar</a>
+		          	<img class="img-left" src="<?= base_url('assets/frontend/img/course-2.jpg'); ?>" height="170">
+		          	<?php 
+		          		$tutor = $this->Dynamic_model->set_model("tbl_tutorial","tt","tutor_id")->get_all_data(array("row_array" => true))['datas'];
+
+		          	?>
+			        <div class="content-heading putih"><h3><?= $tutor['tutor_name']; ?></h3></div>
+			        <p class="putih"> <?= strip_tags($tutor['tutor_desc']); ?> </p>
+			        <a href="<?= site_url('tutorial'); ?>" class="btn btn-info" title=""><?= $tutor['tutor_name']; ?></a>
 		        </div>
 		    </div>
 	     	<hr/>
@@ -98,42 +100,32 @@
 		    </div>
 	    </div>
         <!-- End Our courses titile -->
-
           <div class="row">
           	<div class="col-md-12 col-sm-12 col-xs-12">
           		<div id="Carousels" class="carousel slide">
-
-          			<ol class="carousel-indicators">
+          			<!-- <ol class="carousel-indicators">
           				<li data-target="#Carousels" data-slide-to="0" class="active"></li>
           				<li data-target="#Carousels" data-slide-to="1"></li>
           				<li data-target="#Carousels" data-slide-to="2"></li>
-          			</ol>
+          			</ol> -->
           			<!-- Carousel items -->
           			<div class="carousel-inner">
           				<div class="item active">
           					<div class="row">
+          						<marquee>
           						<?php 
           							$mitra = $this->Dynamic_model->set_model("tbl_mitra")->get_all_data()['datas'];
 
           							foreach( $mitra as $key => $val ):
           						?>
           						<div class="col-md-2 col-xs-4">
-          							<a href="<?= $val['mitra_link_web']; ?>" class="thumbnail">
-          								<img src="<?= base_url($val['mitra_photo']); ?>" alt="Image" style="height:80px;"></a>
+      								<img src="<?= base_url($val['mitra_photo']); ?>" alt="Image" style="height:80px;">
           						</div>
 	          					<?php endforeach; ?>
+		          				</marquee>
           					</div><!--.row-->
           				</div><!--.item-->
   					</div>
-
-  					<!-- <a class="left carousels-control" href="#Carousels" role="button" data-slide="prev">
-				      	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				      	<span class="sr-only">Previous</span>
-				    </a>
-				    <a class="right carousels-control" href="#Carousels" role="button" data-slide="next">
-				      	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				      	<span class="sr-only">Next</span>
-				    </a> -->
   				</div>
   			</div>
   		</div>

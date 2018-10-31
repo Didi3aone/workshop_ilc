@@ -1,18 +1,80 @@
 <script>
     $(document).ready( function() {
 
-        // var start_date = $("#start").val();
-        // var end_date   = $("#end").val();
+        $('.button-submited').click(function(e) {
+            e.preventDefault();
 
-        // if( end_date < start_date )
-        // {
-        //     $.notify({
-        //         title: "<strong>Warning !!!</strong>",
-        //         message: "Please check interval date",
-        //     }, {
-        //         type: 'danger' 
-        //     })
-        // }
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var subject = $("#subject").val();
+            var content = $("#content").val();
+
+            if( name == "") {
+                $.notify({
+                    title: "<strong>Warning !!!</strong>",
+                    message: "Nama tidak boleh kosong",
+                }, {
+                    type: 'danger' 
+                })
+            } else if( email == "") {
+                $.notify({
+                    title: "<strong>Warning !!!</strong>",
+                    message: "Email tidak boleh kosong",
+                }, {
+                    type: 'danger' 
+                })
+            } else if( subject == "" ) {
+                $.notify({
+                    title: "<strong>Warning !!!</strong>",
+                    message: "Subject tidak boleh kosong",
+                }, {
+                    type: 'danger' 
+                })
+            } else if( content == "") {
+                $.notify({
+                    title: "<strong>Warning !!!</strong>",
+                    message: "Pesan tidak boleh kosong",
+                }, {
+                    type: 'danger' 
+                })
+            }  else {
+
+                var data = $("#forms").serialize();
+                var url = "<?= site_url('setting/save_form_contact'); ?>";
+                console.log(url);
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: data,
+                    dataType :'json',
+                    success:function( response ) {
+                        console.log(response);
+                        if( response['is_error'] == true ) {
+                            $.notify({
+                                title: "<strong>Warning !!!</strong>",
+                                message: "Silahkan Isi form terlebih dahulu",
+                            }, {
+                                type: 'danger' 
+                            })
+                        } else {
+                            var message = response['notif_msg'];
+                            var title = response['notif'];
+                            $.notify({
+                                title: "<strong>"+ title +" !!!</strong>",
+                                message: message,
+                            }, {
+                                type: 'success' ,
+                                allow_dismiss: false
+                            })
+
+                            $("#forms")[0].reset();
+                        }
+                    },error:function(xhr) {
+                        console.log(xhr);
+                    }
+                })
+            }
+        })
 
         $('#Carousels').carousel({
             interval: 3000
@@ -74,11 +136,49 @@
         })
 
     });
+
+    $(".btn-subcribe").click(function(e) {
+        e.preventDefault();
+        var url = "<?= site_url('contact/form_subscribe'); ?>";
+
+        var email = $("#email").val();
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                email : email 
+            },
+            dataType:'json',
+            success: function (response) {
+                if( response['is_error'] == true) {
+                    $.notify({
+                        title: "<strong>Warning !!!</strong>",
+                        message: response['error_msg'],
+                    }, {
+                        type: 'danger' 
+                    })
+                } else {
+                    $.notify({
+                        title: "<strong>"+ response['notif'] +" !!!</strong>",
+                        message: response['notif_msg'],
+                    }, {
+                        type: 'success' ,
+                        allow_dismiss: false
+                    })
+                    $("#email").val('');
+                }
+            },error: function (xhr) {
+                console.log(xhr)
+            }
+        })
+    })
+
     $('input:checkbox').change(function(){
         if($(this).is(":checked")) {
-            $('button').removeAttr("disabled");
+            $('#sbutton').removeAttr("disabled");
         } else {
-            $('button').attr("disabled",true);
+            $('#sbutton').attr("disabled",true);
         }
     });
 
@@ -90,4 +190,5 @@
     function ref() {
         location.href="<?= site_url('training'); ?>";
     }
+
 </script>

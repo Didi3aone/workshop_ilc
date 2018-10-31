@@ -7,7 +7,7 @@
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-lg-offset-1 text-right">
             <h1>
                 <a class="btn btn-primary" href="<?= site_url(); ?>manager/mitra/create" rel="tooltip" title="Add new partner" data-placement="left">
-                    <i class="fa fa-plus fa-lg"></i>
+                    <i class="fa fa-plus fa-lg"></i> Add
                 </a>
             </h1>
         </div>
@@ -27,7 +27,7 @@
 
                     <header>
                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                        <h2>Background Slider list</h2>
+                        <h2>Partner list</h2>
                     </header>
 
                     <!-- widget div-->

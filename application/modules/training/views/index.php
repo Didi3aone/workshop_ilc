@@ -6,13 +6,13 @@
 <div class="container" style="margin-top: 160px;">
     <div style="overflow-x:auto;">
         <div class="table-responsive"> 
-            <table class="table table-bordered" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
+            <table class="table table-bordered tbl-atas">
                 <thead>
                     <tr>
                         <form action="<?= site_url('training/index'); ?>" method='GET'>
                             <th style="background-color: blue; color: white;">
                                 <label>Judul</label>
-                                <input type="text" class="form-control" name="judul" id="search" value="" placeholder="Judul">
+                                <input type="text" class="form-control t_header" name="judul" id="search" value="" placeholder="Judul">
                             </th>
 
                             <th style="background-color: blue; color: white;">
@@ -27,7 +27,7 @@
 
                             <th style="background-color: blue; color: white;">
                                 <label>Lokasi</label>
-                                <input type="text" class="form-control" name="tempat" value="" placeholder="Lokasi">
+                                <input type="text" class="form-control t_header" name="tempat" value="" placeholder="Lokasi">
                             </th>
 
                             <th style="background-color: blue; color: white;">
@@ -42,12 +42,13 @@
         </div>
     </div>
 
-    <div style="overflow-x:auto; margin-bottom: 150px;">
-        <table class="table table-striped table-bordered" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered tbl-atas table-hover">
             <tr>
                 <th style="background-color: blue; color: white;">#</th>
                 <th style="background-color: blue; color: white;">Judul</th>
-                <th style="background-color: blue; color: white;">Tanggal</th>
+                <th style="background-color: blue; color: white;">Tanggal Mulai</th>
+                <th style="background-color: blue; color: white;">Tanggal Selesai</th>
                 <th style="background-color: blue; color: white;">Tempat</th>
                 <th style="background-color: blue; color: white;">Biaya</th>
                 <th style="background-color: blue; color: white;">Action</th>
@@ -63,9 +64,13 @@
                     <td style="text-align: center;"><?= $no++;?></td>
                     <td style="text-align: center;"><?= $val['PelatihanTitle']; ?></td>
                     <td style="text-align: center;"><?= $val['PelatihanStartDate']; ?></td>
+                    <td style="text-align: center;"><?= $val['PelatihanEndDate']; ?></td>
                     <td style="text-align: center;"><?= $val['PelatihanLokasi']; ?></td>
                     <td style="text-align: center;"><?= $val['PelatihanBiaya']; ?></td>
-                    <td style="text-align: center;"><a href="<?= site_url('register/form/'.$val['PelatihanId']); ?>" class="btn btn-info" title=""><i class="fa fa-file-o"></i> Daftar</a></td>
+                    <td style="text-align: center;">
+                        <a href="<?= site_url('register/form/'.$val['PelatihanId']); ?>" class="btn btn-info" title=""><i class="fa fa-file-o"></i> Daftar</a>
+                        <a href="<?= site_url('training/view/'.$val['PelatihanId']); ?>" class="btn btn-warning" title=""><i class="fa fa-eye"></i> Detail</a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

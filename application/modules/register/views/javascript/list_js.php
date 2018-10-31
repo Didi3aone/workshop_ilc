@@ -18,7 +18,7 @@
                     var edit =  '<td>';
                         // edit +=  ' <a href="'+ url + 'edit/' + full.PelatihanId + '" class="btn btn-primary btn-circle" rel="tooltip" title="Edit Group" data-placement="top" ><i class="fa fa-pencil"></i></a>';
                         edit +=  ' <a href="' + url + 'detail/'+full.pendaftaran_id +'" class="btn btn-info btn-circle" rel="tooltip" title="Lihat Detail" data-placement="top" ><i class="fa fa-eye"></i></a>&nbsp;';
-                        edit += '<a href="'+ url +'delete" data-id ="' + full.pendaftaran_id + '" data-name ="' + full.pendaftaran_company + '" class="btn btn-danger btn-circle delete-confirm" rel="tooltip" title="Delete User" data-placement="top" ><i class="fa fa-trash-o"></i></a>';
+                        // edit += '<a href="'+ url +'delete" data-id ="' + full.pendaftaran_id + '" data-name ="' + full.pendaftaran_company + '" class="btn btn-danger btn-circle delete-confirm" rel="tooltip" title="Delete User" data-placement="top" ><i class="fa fa-trash-o"></i></a>';
                                
                         edit +=  '</td>';
 

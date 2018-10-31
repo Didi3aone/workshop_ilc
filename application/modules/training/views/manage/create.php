@@ -1,8 +1,21 @@
 <?php
-    $id                 = isset($datas["PelatihanId"]) ? $datas["PelatihanId"] : "";
-    $image 	            = isset($datas["PelatihanId"]) ? $datas["PelatihanId"] : "";
+    $id         = isset($datas["PelatihanId"]) ? $datas["PelatihanId"] : "";
+    $title      = isset($datas["PelatihanTitle"]) ? $datas["PelatihanTitle"] : "";
+    $company    = isset($datas["PelatihanCompany"]) ? $datas["PelatihanCompany"] : "";
+    $real       = isset($datas["PelatihanPhotoReal"]) ? $datas["PelatihanPhotoReal"] : "";
+    $photo      = isset($datas["PelatihanPhoto"]) ? $datas["PelatihanPhoto"] : "";
+    $lokasi     = isset($datas["PelatihanLokasi"]) ? $datas["PelatihanLokasi"] : "";
+    $biaya      = isset($datas["PelatihanBiaya"]) ? $datas["PelatihanBiaya"] : "";
+    $start      = isset($datas["PelatihanStartDate"]) ? $datas["PelatihanStartDate"] : "";
+    $end        = isset($datas["PelatihanEndDate"]) ? $datas["PelatihanEndDate"] : "";
+    $desc       = isset($datas["PelatihanDesc"]) ? $datas["PelatihanDesc"] : "";
+    $create     = isset($datas["PelatihanCreatedDate"]) ? $datas["PelatihanCreatedDate"] : "";
+    $update     = isset($datas["PelatihanUpdatedDate"]) ? $datas["PelatihanUpdatedDate"] : "";
+    $createdby  = isset($datas["username"]) ? $datas["username"] : "";
+    $updatedby  = isset($datas["username`"]) ? $datas["username`"] : "";
 
     $btn_msg = ($id == 0) ? "Create" : " Update";
+    $btn_up_msg = ($id == 0) ? "Upload" : " Change";
     $title_msg = ($id == 0) ? "Create" : " Update";
 ?>
 <!-- MAIN CONTENT -->
@@ -30,7 +43,7 @@
                     </header>
                     <!-- widget div-->
                     <div>
-                        <form id="form" class="smart-form" method="POST" action="<?= site_url('manager/training/process_form') ?>">
+                        <form id="form" class="smart-form" method="POST" action="<?= site_url('manager/training/process_form') ?>" enctype='multipart/form-data'>
                             <?php if($id != 0): ?>
                                 <input type="hidden" name="id" value="<?= $id ?>" />
                             <?php endif; ?>
@@ -39,44 +52,38 @@
                                 <section>
                                     <label class="label">Judul <sup class="color-red">*</sup></label>
                                     <label class="input">
-                                        <input type="text" name="title" value="" placeholder="Judul">
-                                    </label>
-                                </section>
-
-                                <section>
-                                    <label class="label">Perusahaan <sup class="color-red">*</sup></label>
-                                    <label class="input">
-                                        <input type="text" name="company" value="" placeholder="Perusahaan">
+                                        <input type="text" name="title" value="<?= $title ?>" placeholder="Judul">
                                     </label>
                                 </section>
 
                                 <section>
                                     <label class="label">Lokasi <sup class="color-red">*</sup></label>
                                     <label class="input">
-                                        <input type="text" name="lokasi" value="" placeholder="Lokasi">
+                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" placeholder="Lokasi">
                                     </label>
                                 </section>
 
                                 <section>
                                     <label class="label">Biaya <sup class="color-red">*</sup></label>
                                     <label class="input">
-                                        <input type="text" name="biaya" value="" placeholder="Biaya">
+                                        <input type="text" name="biaya" value="<?= $biaya; ?>" placeholder="Biaya">
                                     </label>
                                 </section>
+                                <div class="row">
+                                    <section class="col col-6">
+                                        <label class="label">Tanggal Mulai <sup class="color-red">*</sup></label>
+                                        <label class="input">
+                                            <input type="text" name="dates" class="datetimepicker1" value="<?= $start; ?>" placeholder="Tanggal Mulai">
+                                        </label>
+                                    </section>
 
-                                <section>
-                                    <label class="label">Tanggal Pelaksana <sup class="color-red">*</sup></label>
-                                    <label class="input">
-                                        <input type="text" name="dates" class="datepicker" value="" placeholder="Tanggal Pelaksana">
-                                    </label>
-                                </section>
-
-                                <section>
-                                    <label class="label">Deskripsi</label>
-                                    <label class="textarea">
-                                        <textarea name="desc" class="tinymce"></textarea>
-                                    </label>
-                                </section>
+                                    <section class="col col-6">
+                                        <label class="label">Tanggal Selesai</label>
+                                        <label class="input">
+                                            <input type="text" name="enddates" class="datepickers" value="<?= $end; ?>" placeholder="Tanggal Selesai">
+                                        </label>
+                                    </section>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-xs-12">
@@ -84,34 +91,86 @@
                                     </div>
                                     <section class="col col-6">
                                         <label class="label">Upload Brosur</label>
-                                            <?php if(!empty($image)) :?>
-                                                <a href="<?= base_url($image) ?>"  data-lightbox="roadtrip">
-                                                    <img src="<?= base_url($image) ?>" alt="" height=100 width=100></a>
+                                            <?php if(!empty($photo)) :?>
+                                                <a href="<?= base_url($photo) ?>"  data-lightbox="roadtrip">
+                                                    <img src="<?= base_url($photo) ?>" alt="" height=100 width=100></a>
                                             <?php endif; ?> &nbsp;
-                                            <button type="button" id="addimage" data-maxsize="<?= MAX_UPLOAD_IMAGE_SIZE ?>" data-maxwords="<?= WORDS_MAX_UPLOAD_IMAGE_SIZE ?>" data-edit="0" class="btn btn-primary"><?= $btn_msg ?></button>
+                                            <button type="button" id="addimage" data-maxsize="<?= MAX_UPLOAD_IMAGE_SIZE ?>" data-maxwords="<?= WORDS_MAX_UPLOAD_IMAGE_SIZE ?>" data-edit="0" class="btn btn-primary"><?= $btn_up_msg ?></button>
                                          <div class="note"> Klik Button (add image) Brosur</div>
                                     </section>
 
                                     <section class="col col-6">
-                                        <label class="label">File Real</label>
+                                        <label class="label">Upload Real Brosur</label>
                                         <label class="input">
-                                            <input type="file" name="real_image" class="form-control" placeholder="File Real" value="" /> <br>
-                                            <?php if($image): ?>
-                                            <div class="file_tech_div">
-                                                <img src="<?= base_url($image) ?>" style="width: 90px;height: 70px;">
-                                            <?php  endif; ?>
+                                            <?php 
+                                                if( !empty($real) ) : ?>
+                                                    <img src="<?= base_url($real); ?>" id="imgprev" width=160 alt="">
+                                                    <button type="button" class="btn btn-primary klik">Change</button></br>
+                                                    <input type="file" id="img" style="display: none; margin-top: 10px;" name="real_image">
+                                                    <?php else : ?>
+                                                    <input type="file" name="real_image">
+                                                <?php endif;
+                                            ?>
                                         </label>
-                                        <div class="note"> File Ukuran asli</div>
+                                        <div class="note"> Untuk di slide rekomendasi ukuran file 1024x600</div>
                                     </section>
                                 </div>
 
+                                <section>
+                                    <label class="label">Deskripsi</label>
+                                    <label class="textarea">
+                                        <textarea name="desc" class="tinymce"><?= $desc; ?></textarea>
+                                    </label>
+                                </section>
+
                                 <footer>
 									<button type="submit" class="btn btn-submit btn-primary"> <i class="fa fa-save"></i>
-										Save
+										<?= $btn_msg; ?>
 									</button>
 									<a href="<?= site_url() ?>manager/training" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Cancel</a>
 								</footer>
 
+                            </fieldset>
+
+                            <fieldset>
+                                <div class="row">
+                                    <p>Informasi tambahan</p>
+                                    <?php if(!empty($create)) : ?>
+                                    <section class="col col-lg-12">
+                                        <label class="label"> Created Date</label>
+                                        <label class="input">                                       
+                                            <input type="text" name="" value="<?= $create ?>" readonly="readonly"> 
+                                        </label>
+                                    </section>
+                                    <?php endif;?>
+
+                                    <?php if(!empty($update)) :?>
+                                    <section class="col col-lg-12">
+                                        <label class="label"> Updated Date</label>
+                                        <label class="input">                                       
+                                            <input type="text" name="" value="<?= $update ?>" readonly="readonly"> 
+                                        </label>
+                                    </section>
+                                    <?php endif;?>
+
+                                    <?php if(!empty($createdby)) :?>
+                                    <section class="col col-lg-12">
+                                        <label class="label"> Created By</label>
+                                        <label class="input">                                       
+                                            <input type="text" name="" value="<?= $createdby ?>" readonly="readonly"> 
+                                        </label>
+                                    </section>
+                                    <?php endif;?>
+
+                                    <?php if(!empty($updatedby)) :?>
+                                    <section class="col col-lg-12">
+                                        <label class="label"> Updated By</label>
+                                        <label class="input">                                       
+                                            <input type="text" name="" value="<?= $updatedby ?>" readonly="readonly"> 
+                                        </label>
+                                    </section>
+                                    <?php endif;?>
+                                </div>
                             </fieldset>
                         </form>
                     </div>

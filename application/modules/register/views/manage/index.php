@@ -4,13 +4,6 @@
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
             <h1 class="page-title txt-color-blueDark"><?= $title_page ?></h1>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-lg-offset-1 text-right">
-            <h1>
-                <a class="btn btn-primary" href="<?= site_url(); ?>manager/training/create" rel="tooltip" title="Add new Workshop" data-placement="left">
-                    <i class="fa fa-plus fa-lg"></i>
-                </a>
-            </h1>
-        </div>
     </div>
 
     <!-- widget grid -->
@@ -49,7 +42,7 @@
                                         <th class="hasinput">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="name_filter" name="filter[name]" class="form-control filter-this" placeholder="Title" />
+                                                    <input type="text" id="name_filter" name="filter[company]" class="form-control filter-this" placeholder="Perusahaan" />
                                                     <div class="input-group-btn"><button type="button" class="clear-filter btn"><i class="fa fa-close"></i></button></div>
                                                 </div>
                                             </div>

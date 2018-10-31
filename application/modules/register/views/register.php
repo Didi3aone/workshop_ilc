@@ -17,21 +17,21 @@
 	                <td>
 	                	<input type="hidden" name="train_id" value="<?= $id; ?>">
 	                	<input type="hidden" name="id">
-	                    <input type="text" class="form-control" name="" value="<?= $judul; ?>" readonly placeholder="">
+	                    <input type="text" class="form-control td-inputan" name="" value="<?= $judul; ?>" readonly placeholder="">
 	                </td>
 	            </tr>
 
 	            <tr>
 	            	<td style="width: 190px;">Tanggal Pelaksana</td>
 	                <td>
-	                    <input type="text" class="form-control" name="" value="<?= $tanggal; ?>" readonly placeholder="">
+	                    <input type="text" class="form-control td-inputan" name="" value="<?= $tanggal; ?>" readonly placeholder="">
 	                </td>
 	            </tr>
 
 	            <tr>
 	            	<td style="width: 190px;">Perusahaan</td>
 	                <td>
-	                    <input type="text" class="form-control" name="company" value="" placeholder="">
+	                    <input type="text" class="form-control td-inputan" name="company" value="" placeholder="">
 	                </td>
 	            </tr>
 		    </table>
@@ -46,38 +46,78 @@
 		            </tr>
 		            <tr>
 		            	<td>1</td>
-		            	<td><input type="text" class="form-control" name="name_1" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="jabatan_1" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="phone_1" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="email_1" value="" placeholder=""></td>
+		            	<td class="td-inputan">
+		            		<input type="text" class="form-control td-inputan" name="name_1" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="jabatan_1" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="phone_1" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="email_1" value="" placeholder="">
+		            	</td>
 		            </tr>
 		            <tr>
 		            	<td>2</td>
-		            	<td><input type="text" class="form-control" name="name_2" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="jabatan_2" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="phone_2" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="email_2" value="" placeholder=""></td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="name_2" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="jabatan_2" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="phone_2" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="email_2" value="" placeholder="">
+		            	</td>
 		            </tr>
 		            <tr>
 		            	<td>3</td>
-		            	<td><input type="text" class="form-control" name="name_3" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="jabatan_3" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="phone_3" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="email_3" value="" placeholder=""></td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="name_3" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="jabatan_3" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="phone_3" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="email_3" value="" placeholder="">
+		            	</td>
 		            </tr>
 		            <tr>
 		            	<td>4</td>
-		            	<td><input type="text" class="form-control" name="name_4" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="jabatan_4" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="phone_4" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="email_4" value="" placeholder=""></td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="name_4" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="jabatan_4" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="phone_4" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="email_4" value="" placeholder="">
+		            	</td>
 		            </tr>
 		            <tr>
 		            	<td>5</td>
-		            	<td><input type="text" class="form-control" name="name_5" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="jabatan_5" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="phone_5" value="" placeholder=""></td>
-		            	<td><input type="text" class="form-control" name="email_5" value="" placeholder=""></td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="name_5" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="jabatan_5" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="phone_5" value="" placeholder="">
+		            	</td>
+		            	<td>
+		            		<input type="text" class="form-control td-inputan" name="email_5" value="" placeholder="">
+		            	</td>
 		            </tr>
 	            </table>
 	        </div>
@@ -88,44 +128,44 @@
 		            		<th colspan="2">PENANGGUNG JAWAB PENDAFTARAN </th>
 		            	</tr>
 	            		<tr>
-			            	<td>Nama</td>
+			            	<td >Nama</td>
 			                <td>
-			                    <input type="text" class="form-control" name="pen_name" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="pen_name" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>Jabatan</td>
 			                <td>
-			                    <input type="text" class="form-control" name="pen_jabatan" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="pen_jabatan" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>TELEPON (Ext.)</td>
 			                <td>
-			                    <input type="text" class="form-control" name="pen_telp" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="pen_telp" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>FAX</td>
 			                <td>
-			                    <input type="text" class="form-control" name="pen_fax" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="pen_fax" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>HANDPHONE</td>
 			                <td>
-			                    <input type="text" class="form-control" name="pen_phone" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="pen_phone" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>EMAIL</td>
 			                <td>
-			                    <textarea name="email" class="form-control"></textarea> 
+			                    <textarea name="email" class="form-control td-inputan"></textarea> 
 			                </td>
 		            	</tr>
 		            </table>
@@ -139,42 +179,42 @@
 		            	<tr>
 			            	<td>Nama</td>
 			                <td>
-			                    <input type="text" class="form-control" name="bayar_name" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="bayar_name" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>Jabatan</td>
 			                <td>
-			                    <input type="text" class="form-control" name="bayar_jabatan" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="bayar_jabatan" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>TELEPON (Ext.)</td>
 			                <td>
-			                    <input type="text" class="form-control" name="bayar_telp" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="bayar_telp" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>FAX</td>
 			                <td>
-			                    <input type="text" class="form-control" name="bayar_fax" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="bayar_fax" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>HANDPHONE</td>
 			                <td>
-			                    <input type="text" class="form-control" name="bayar_phone" value="" placeholder="">
+			                    <input type="text" class="form-control td-inputan" name="bayar_phone" value="" placeholder="">
 			                </td>
 		            	</tr>
 
 		            	<tr>
 			            	<td>ALAMAT PENGIRIMAN INVOICE</td>
 			                <td>
-			                    <textarea name="bayar_address" class="form-control"></textarea> 
+			                    <textarea name="bayar_address" class="form-control td-inputan"></textarea> 
 			                </td>
 		            	</tr>
 		            </table>
@@ -194,8 +234,8 @@
 
 		</form> 
         <div class="footer-regis">
-        	<input type="checkbox" name="cek" class="cek"> Saya setuju dengan <a href="<?= site_url(); ?>" title="" style="color: blue;"> Syarat & Ketentuan</a> yang ditetapkan oleh PT "NAMA PT"<br><br> 
-        	<button type="button" class="btn btn-primary submit-save" disabled>submit</button>
+        	<input type="checkbox" name="cek" class="cek"> Saya setuju dengan <a href="<?= site_url('syarat-ketentuan'); ?>" target="_blank" title="" style="color: blue;"> Syarat & Ketentuan</a> yang ditetapkan oleh PT "NAMA PT"<br><br> 
+        	<button type="button" id="sbutton" class="btn btn-primary submit-save" disabled>submit</button>
         </div>
 	</div>
 </div>

@@ -150,8 +150,17 @@
                 <li>
                     <a href="#"><i class="fa fa-lg fa-fw fa-building"></i> <span class="menu-item-parent">Partner</span></a>
                     <ul>
-                        <li class="<?= (isset($active_page) && $active_page == "partner") ? "active" : ""?>">
+                        <li class="<?= (isset($active_page) && $active_page == "mitra") ? "active" : ""?>">
                             <a href="<?= site_url('manager/mitra') ?>">List Data</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-phone"></i> <span class="menu-item-parent">Contact Us</span></a>
+                    <ul>
+                        <li class="<?= (isset($active_page) && $active_page == "contact") ? "active" : ""?>">
+                            <a href="<?= site_url('manager/contact') ?>">List Data</a>
                         </li>
                     </ul>
                 </li>
@@ -167,18 +176,19 @@
                         </li>
                     </ul>
                 </li>
+                
                 <li>
                     <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Setting</span></a>
                     <ul>
-                        <li class="<?= (isset($active_page) && $active_page == "setting") ? "active" : ""?>">
-                            <a href="<?= site_url('manager/setting/tutorial-list') ?>">Tutorial</a>
+                        <li class="<?= (isset($active_page) && $active_page == "setting-tutor") ? "active" : ""?>">
+                            <a href="<?= site_url('manager/setting/tutor-list') ?>">Tutorial</a>
                         </li>
 
-                        <li class="<?= (isset($active_page) && $active_page == "setting") ? "active" : ""?>">
+                        <li class="<?= (isset($active_page) && $active_page == "setting-payment") ? "active" : ""?>">
                             <a href="<?= site_url('manager/setting/payment-list') ?>">Metode Pembayaran</a>
                         </li>
 
-                        <li class="<?= (isset($active_page) && $active_page == "setting") ? "active" : ""?>">
+                        <li class="<?= (isset($active_page) && $active_page == "setting-tautan") ? "active" : ""?>">
                             <a href="<?= site_url('manager/setting/tautan-list') ?>">Tautan</a>
                         </li>
 

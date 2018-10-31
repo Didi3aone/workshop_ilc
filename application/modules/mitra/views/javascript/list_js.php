@@ -33,7 +33,7 @@
 	            "render": function(data, type, full) {
 	                var edit =  '<td>';
 	                    edit +=  ' <a href="'+ url + 'edit/' + full.mitra_id + '" class="btn btn-primary btn-circle" rel="tooltip" title="Edit Group" data-placement="top" ><i class="fa fa-pencil"></i></a>' +
-	                             ' <a href="'+ url +'delete" data-id ="' + full.mitra_id + '" data-name ="' + full.mitra_name + '" class="btn btn-danger btn-circle delete-confirm" rel="tooltip" title="Delete Group" data-placement="top" ><i class="fa fa-trash-o"></i></a>';
+	                             ' <a href="'+ url +'delete/" data-id ="' + full.mitra_id + '" data-name ="' + full.mitra_name + '" class="btn btn-danger btn-circle delete-confirm" rel="tooltip" title="Delete Group" data-placement="top" ><i class="fa fa-trash-o"></i></a>';
 	                    edit +=  '</td>';
 
 	                return edit;
